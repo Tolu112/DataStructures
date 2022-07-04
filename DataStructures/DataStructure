@@ -1,0 +1,43 @@
+﻿//Task:
+//Write a program that will take in a word from the user and reverses the inputted word.
+
+
+using System.Collections;
+
+Console.WriteLine("Welcome to the Reverse Translator!");
+
+//Request and take user input (1 point)
+Console.Write("Please enter a word or sentence to begin: ");
+string input = Console.ReadLine().ToLower().Trim();
+
+input = Reverse(input);
+Console.WriteLine($"Translated to: {input}");
+
+
+static String Reverse(String str)
+{
+    char[] charArr = str.ToCharArray();
+    int size = charArr.Length;
+    Stack stack = new Stack(size);
+
+    int i;
+    for (i = 0; i < size; ++i)
+    {
+        stack.Push(charArr[i]);
+    }
+
+    for (i = 0; i < size; ++i)
+    {
+        charArr[i] = (char)stack.Pop();
+    }
+
+    return String.Join("", charArr);
+}
+
+
+
+//Extra Challenges:
+//Consider cases where the user does not enter a single word but a sentence instead.
+//Do not reverse the entire sentence, instead reverse each word in the sentence, keeping the words in their original positions.
+//Validate user input: make sure the user is only entering words and not symbols or numbers.
+
